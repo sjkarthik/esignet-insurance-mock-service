@@ -1,4 +1,4 @@
-\c mosip_mockidentitysystem
+\c mosip_mockidentitysystem_insurance
 
 \ir ddl/mockidentitysystem-mock_identity.sql
 \ir ddl/mockidentitysystem-kyc_auth.sql

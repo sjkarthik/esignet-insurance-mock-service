@@ -6,7 +6,7 @@ if [ $# -ge 1 ] ; then
   export KUBECONFIG=$1
 fi
 
-NS=esignet
+NS=esignet-insurance
 CHART_VERSION=0.9.2
 
 read -p "Please provide mock relying party ui domain (eg: healthservices.sandbox.xyz.net ) : " MOCK_UI_HOST
@@ -29,10 +29,10 @@ function installing_mock-relying-party-ui() {
   echo Istio label
   kubectl label ns $NS istio-injection=enabled --overwrite
 
-  ESIGNET_HOST=$(kubectl get cm global -o jsonpath={.data.mosip-esignet-host})
+  ESIGNET_HOST=$(kubectl get cm global -o jsonpath={.data.mosip-esignet-insurance-host})
 
   echo Installing Mock Relying Party UI
-  helm -n $NS install mock-relying-party-ui mosip/mock-relying-party-ui \
+  helm -n $NS install mock-relying-party-ui-insurance mosip/mock-relying-party-ui \
       --set mock_relying_party_ui.mock_relying_party_ui_service_host="$MOCK_UI_HOST" \
       --set mock_relying_party_ui.ESIGNET_UI_BASE_URL="https://$ESIGNET_HOST" \
       --set mock_relying_party_ui.MOCK_RELYING_PARTY_SERVER_URL="https://$MOCK_UI_HOST/mock-relying-party-service" \
@@ -43,7 +43,7 @@ function installing_mock-relying-party-ui() {
       --set istio.hosts\[0\]="$MOCK_UI_HOST" \
       --version $CHART_VERSION
 
-  kubectl -n $NS get deploy mock-relying-party-ui -o name |  xargs -n1 -t  kubectl -n $NS rollout status
+  kubectl -n $NS get deploy mock-relying-party-ui-insurance -o name |  xargs -n1 -t  kubectl -n $NS rollout status
 
   echo Installed mock-relying-party-ui service
   return 0

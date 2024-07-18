@@ -4,7 +4,7 @@
 
 function copying_cm() {
   COPY_UTIL=../copy_cm_func.sh
-  DST_NS=esignet
+  DST_NS=esignet-insurance
 
   $COPY_UTIL configmap global default $DST_NS
   $COPY_UTIL configmap config-server-share config-server $DST_NS

@@ -1,17 +1,17 @@
 \c mosip_mockidentitysystem
 
 GRANT CONNECT
-   ON DATABASE mosip_mockidentitysystem
-   TO mockidsystemuser;
+   ON DATABASE mosip_mockidentitysystem_insurance
+   TO mockidsysteminsuranceuser;
 
 GRANT USAGE
    ON SCHEMA mockidentitysystem
-   TO mockidsystemuser;
+   TO mockidsysteminsuranceuser;
 
 GRANT SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES
    ON ALL TABLES IN SCHEMA mockidentitysystem
-   TO mockidsystemuser;
+   TO mockidsysteminsuranceuser;
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA mockidentitysystem
-	GRANT SELECT,INSERT,UPDATE,DELETE,REFERENCES ON TABLES TO mockidsystemuser;
+	GRANT SELECT,INSERT,UPDATE,DELETE,REFERENCES ON TABLES TO mockidsysteminsuranceuser;
 

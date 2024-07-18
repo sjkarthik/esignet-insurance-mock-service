@@ -16,4 +16,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ template "mock-identity-system.serviceAccountName" . }}
-    namespace: {{ .Release.Namespace }}
+    #namespace: {{ .Release.Namespace }}
+    namespace: esignet-insurance

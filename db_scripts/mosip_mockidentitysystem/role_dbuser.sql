@@ -1,4 +1,4 @@
-CREATE ROLE mockidsystemuser WITH
+CREATE ROLE mockidsysteminsuranceuser WITH
 	INHERIT
 	LOGIN
 	PASSWORD :dbuserpwd;

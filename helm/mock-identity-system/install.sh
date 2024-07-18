@@ -6,7 +6,7 @@ if [ $# -ge 1 ] ; then
   export KUBECONFIG=$1
 fi
 
-NS=esignet
+NS=esignet-insurance
 CHART_VERSION=0.9.2
 
 echo Create $NS namespace
@@ -33,10 +33,10 @@ function installing_mock-identity-system() {
     ENABLE_INSECURE='--set enable_insecure=true';
   fi
 
-  echo Installing mock-identity-system
-  helm -n $NS install mock-identity-system mosip/mock-identity-system --version $CHART_VERSION $ENABLE_INSECURE
+  echo Installing mock-identity-system-insurance
+  helm -n $NS install mock-identity-system-insurance mosip/mock-identity-system --version $CHART_VERSION $ENABLE_INSECURE
 
-  kubectl -n $NS get deploy mock-identity-system -o name |  xargs -n1 -t  kubectl -n $NS rollout status
+  kubectl -n $NS get deploy mock-identity-system-insurance -o name |  xargs -n1 -t  kubectl -n $NS rollout status
 
   echo Installed mock-identity-system service
   return 0
